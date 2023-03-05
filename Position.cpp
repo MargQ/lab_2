@@ -1,6 +1,5 @@
 #include "Position.h"
 
-
 //случайное число - формула
 int Position::RandomNum(int min, int max)
 {
