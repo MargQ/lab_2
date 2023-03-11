@@ -15,16 +15,10 @@ class Position
 public:
     int _x, _y, _x1, _x2, _y1, _y2;
     int _obj[M][M];
-    int _r;
+    int  _num_steps;
 
 public:
-    Position() //конструктор
-    {
-        _x = 0; _y = 0;
-        _x1 = 0; _x2 = 0;
-        _y1 = 0; _y2 = 0;
-        _r = 5;
-    }
+    Position(); //конструктор
 
 	int RandomNum(int min, int max);
 	float distance(float x1, float y1, float x2, float y2, float result);

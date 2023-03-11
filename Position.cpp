@@ -1,5 +1,13 @@
 #include "Position.h"
 
+Position::Position() //конструктор 
+{
+    _x = 0; _y = 0;
+    _x1 = 0; _x2 = 0;
+    _y1 = 0; _y2 = 0;
+    _num_steps = 6;  //отвечает за кол-во рандомных перемещений объекта
+}
+
 //случайное число - формула
 int Position::RandomNum(int min, int max)
 {
@@ -18,30 +26,23 @@ float Position::distance(float x1, float y1, float x2, float y2, float result)
 //метод для рандомного перемещения объекта
 void Position::change_pos()
 {
-    int count = 0, count1 = 0, count2 = 0;
-    int dx = 0, dy = 0;
-    while (count < _r)
-    {for (int i = 0; i < _r; i++)
-        {for (int j = 0; j < 2; j++)
-            {if (j == 0)
-                {for (dx = 0; count1 < 1; dx = RandomNum(-1, 1))
-                    {count1++;
-                     _x = _x + dx;
-                    }
-                    count1--;
-                    _obj[i][j] = _x;
-                }
-
-                if (j == 1)
-                {for (dy = 0; count2 < 1; dy = RandomNum(-1, 1))
-                    {count2++;
-                     _y = _y + dy;
-                    }
-                    _obj[i][j] = _y;
-                }
-                count2--;
+   for (int i = 0; i < _num_steps; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            if (j == 0)  
+            {
+                //измененная координата x добавляется в матрицу
+                _x = _x + RandomNum(-1,1);
+                _obj[i][j] = _x;
             }
-            count++;
+
+            if (j == 1)   
+            {
+                //измененная координата y добавляется в матрицу
+                _y = _y + RandomNum(-1,1);
+                _obj[i][j] = _y;
+            }
         }
     }
 }
@@ -50,7 +51,7 @@ void Position::change_pos()
 void Position::output_pos()
 {
     cout << "История перемещения точки:" << endl; 
-    for (int i = 0; i < _r; i++)
+    for (int i = 0; i < _num_steps; i++)
     {
         cout << "(x,y)=";
 
@@ -67,7 +68,7 @@ void Position::output_pos()
 void Position::output_distance()
 {
     float result = 0;
-    for (int i = 0; i < _r - 1; i++)  
+    for (int i = 0; i < _num_steps - 1; i++)  
     {
         for (int j = 0; j < 2; j++)
         {
