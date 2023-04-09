@@ -12,14 +12,16 @@ using namespace std;
 
 class Position
 {
-public:
+private:
     int _x, _y, _x1, _x2, _y1, _y2;
     int _obj[M][M];
-    int  _num_steps;
+    int  _num_steps; //отвечает за кол-во рандомных перемещений объекта
 
 public:
     Position(); //конструктор
-
+	
+	void SetNum_Steps(int value);
+	int GetNum_Steps();
 	int RandomNum(int min, int max);
 	float distance(float x1, float y1, float x2, float y2, float result);
 	void change_pos();

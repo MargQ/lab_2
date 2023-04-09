@@ -5,7 +5,16 @@ Position::Position() //конструктор
     _x = 0; _y = 0;
     _x1 = 0; _x2 = 0;
     _y1 = 0; _y2 = 0;
-    _num_steps = 6;  //отвечает за кол-во рандомных перемещений объекта
+}
+
+void Position::SetNum_Steps(int value)
+{
+   _num_steps = value;
+}
+
+int Position::GetNum_Steps()
+{
+    return _num_steps;
 }
 
 //случайное число - формула
